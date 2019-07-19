@@ -99,8 +99,8 @@ class Material(object):
         self.bottom = None
 
         self.shape = shape
-        self.density = density
-        self.referenceDensity = self.density
+        self._density = density
+        self.referenceDensity = copy(density)
         self.diffusivity = diffusivity
         self.capacity = capacity
         self._thermalExpansivity = None
@@ -123,8 +123,7 @@ class Material(object):
         self.viscosityChange = viscosityChange
         self.melt = False
 
-        self._viscosity = None
-        self.viscosity = viscosity
+        self._viscosity = viscosity
         self._initial_viscosity = None
         self.initial_viscosity = initial_viscosity
         self._plasticity = None
